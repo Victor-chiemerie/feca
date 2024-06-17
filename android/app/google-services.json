@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "276682577009",
+    "project_id": "feca-82a65",
+    "storage_bucket": "feca-82a65.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:276682577009:android:396691a9584e52696237d0",
+        "android_client_info": {
+          "package_name": "com.example.feca"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNZrSpsUmXQ8IXqEbPyEsud7gFVHMVlXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
