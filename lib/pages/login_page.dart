@@ -1,3 +1,4 @@
+import 'package:feca/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -20,8 +21,23 @@ class _LoginPageState extends State<LoginPage> {
 
   // login method
   void login(BuildContext context) async {
-    // log user in
-    print("User has logged in");
+    // auth service
+    final authService = AuthService();
+
+    // try login
+    try {
+      await authService.signInWithEmailPassword(
+        _emailController.text,
+        _pwController.text,
+      );
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
   }
 
   @override
@@ -128,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: colorScheme.tertiary),
-                  // TODO set condition to validate form
+              // TODO set condition to validate form
               onPressed: () => login(context),
               child: Text(
                 "Login",
