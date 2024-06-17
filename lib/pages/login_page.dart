@@ -1,3 +1,4 @@
+import 'package:feca/components/loading.dart';
 import 'package:feca/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
@@ -20,9 +21,12 @@ class _LoginPageState extends State<LoginPage> {
   bool _showPassword = true;
 
   // login method
-  void login(BuildContext context) async {
+  Future<void> login(BuildContext context) async {
     // auth service
     final authService = AuthService();
+    // loading service
+    final loading = Loading();
+    loading.circular(context);
 
     // try login
     try {
@@ -37,6 +41,8 @@ class _LoginPageState extends State<LoginPage> {
           title: Text(e.toString()),
         ),
       );
+    } finally {
+      loading.stop(context);
     }
   }
 
