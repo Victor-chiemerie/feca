@@ -1,3 +1,4 @@
+import 'package:feca/services/auth/auth_gate.dart';
 import 'package:flutter/material.dart';
 
 import '../services/auth/login_or_register.dart';
@@ -36,7 +37,7 @@ class _WelcomePage2State extends State<WelcomePage2> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const LoginOrRegister(),
+                          builder: (context) => const AuthGate(),
                         ),
                       );
                     },
@@ -142,7 +143,7 @@ class _WelcomePage2State extends State<WelcomePage2> {
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const LoginOrRegister(),
+                                builder: (context) => const AuthGate(),
                               ),
                             );
                           }
