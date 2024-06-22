@@ -22,27 +22,27 @@ class _LoginPageState extends State<LoginPage> {
 
   // login method
   Future<void> login(BuildContext context) async {
-    // auth service
+    // auth and loading service
     final authService = AuthService();
-    // loading service
     final loading = Loading();
-    loading.circular(context);
 
     // try login
     try {
+      loading.circular(context);
       await authService.signInWithEmailPassword(
         _emailController.text,
         _pwController.text,
       );
+      loading.stop(context);
     } catch (e) {
+      loading.stop(context);
       showDialog(
         context: context,
         builder: (context) => AlertDialog(
-          title: Text(e.toString()),
+          title: const Text("Login Error"),
+          content: Text(e.toString()),
         ),
       );
-    } finally {
-      loading.stop(context);
     }
   }
 

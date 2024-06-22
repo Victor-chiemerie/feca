@@ -14,7 +14,6 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final double deviceHeight = MediaQuery.of(context).size.height;
-    final double deviceWidth = MediaQuery.of(context).size.width;
     return Drawer(
       backgroundColor: colorScheme.surface,
       child: Padding(
