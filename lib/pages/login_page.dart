@@ -1,3 +1,5 @@
+import 'package:feca/components/loading.dart';
+import 'package:feca/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -19,9 +21,29 @@ class _LoginPageState extends State<LoginPage> {
   bool _showPassword = true;
 
   // login method
-  void login(BuildContext context) async {
-    // log user in
-    print("User has logged in");
+  Future<void> login(BuildContext context) async {
+    // auth and loading service
+    final authService = AuthService();
+    final loading = Loading();
+
+    // try login
+    try {
+      loading.circular(context);
+      await authService.signInWithEmailPassword(
+        _emailController.text,
+        _pwController.text,
+      );
+      loading.stop(context);
+    } catch (e) {
+      loading.stop(context);
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: const Text("Login Error"),
+          content: Text(e.toString()),
+        ),
+      );
+    }
   }
 
   @override
@@ -128,7 +150,7 @@ class _LoginPageState extends State<LoginPage> {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                   backgroundColor: colorScheme.tertiary),
-                  // TODO set condition to validate form
+              // TODO set condition to validate form
               onPressed: () => login(context),
               child: Text(
                 "Login",

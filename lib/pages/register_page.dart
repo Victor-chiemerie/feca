@@ -1,3 +1,5 @@
+import 'package:feca/components/loading.dart';
+import 'package:feca/services/auth/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -21,9 +23,42 @@ class _RegisterPageState extends State<RegisterPage> {
   bool _showConPassword = true;
 
   // reister page
-  void register() {
-    // register user
-    print("This user has registered");
+  Future<void> register(BuildContext context) async {
+    // get auth service
+    final authService = AuthService();
+    // get loading bar
+    final loading = Loading();
+
+    loading.circular(context);
+
+    // password match -> create user
+    if (_pwController.text == _conPwController.text) {
+      try {
+        await authService.signUpWithEmailPassword(
+          _emailController.text,
+          _pwController.text,
+        );
+      } catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          ),
+        );
+      } finally {
+        loading.stop(context);
+      }
+    }
+
+    // passwords don't match -> tell user to fix
+    else {
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text("Passwords don't match"),
+        ),
+      );
+    }
   }
 
   @override
@@ -176,7 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: colorScheme.tertiary,
               ),
-              onPressed: register,
+              onPressed: () => register(context),
               child: Text(
                 "Register",
                 style: TextStyle(

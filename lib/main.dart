@@ -1,8 +1,12 @@
+import 'package:feca/firebase_options.dart';
 import 'package:feca/pages/welcome_page1.dart';
 import 'package:feca/themes/colors.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
