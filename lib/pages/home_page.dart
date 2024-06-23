@@ -1,5 +1,10 @@
+import 'dart:async';
+
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:feca/components/my_drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,16 +14,43 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late String _formattedDateTime;
+  late Timer _timer;
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    // implement initState
+    super.initState();
+    _updateDateTime();
+    _timer = Timer.periodic(const Duration(minutes: 1), (timer) {
+      _updateDateTime();
+    });
+  }
+
+  @override
+  void dispose() {
+    // implement dispose
+    _timer.cancel();
+    super.dispose();
+  }
+
+  void _updateDateTime() {
+    setState(() {
+      DateTime now = DateTime.now();
+      _formattedDateTime = DateFormat('MMM d, yyyy - h:mm a').format(now);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     List<Widget> newBody = [
-      overViewPage(context),
+      overViewPage(),
       dailyPage(),
       eventPage(),
     ];
+
     return Scaffold(
       backgroundColor: colorScheme.surface,
       drawer: const MyDrawer(),
@@ -87,11 +119,11 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget overViewPage(BuildContext context) {
+  Widget overViewPage() {
     final deviceWidth = MediaQuery.of(context).size.width;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       child: ListView(
         children: [
           Container(
@@ -379,7 +411,151 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget dailyPage() {
-    return const Center(child: Text("Daily"));
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
+    final deviceWidth = MediaQuery.of(context).size.width;
+    final deviceHeight = MediaQuery.of(context).size.height;
+    return SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(
+        parent: BouncingScrollPhysics(),
+      ),
+      clipBehavior: Clip.none,
+      child: SizedBox(
+        height: deviceHeight,
+        width: deviceWidth,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Column(
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          color: colorScheme.surface,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Colors.grey.withOpacity(0.2), // Shadow color
+                              offset: const Offset(
+                                  2, 3), // Offset the shadow position
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: CircularProgressIndicator.adaptive(
+                            backgroundColor: colorScheme.tertiary,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        _formattedDateTime,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Daily Inspiration",
+                        style: TextStyle(
+                          fontSize: 19,
+                          fontWeight: FontWeight.w500,
+                          color: colorScheme.tertiary,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    children: [
+                      const FaIcon(
+                        FontAwesomeIcons.facebook,
+                        color: Colors.blue,
+                      ),
+                      const SizedBox(height: 10),
+                      ShaderMask(
+                        shaderCallback: (Rect bounds) {
+                          return const LinearGradient(
+                            colors: <Color>[
+                              Colors.purple,
+                              Colors.pink,
+                              Colors.orange,
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ).createShader(bounds);
+                        },
+                        child: const FaIcon(
+                          FontAwesomeIcons.instagram,
+                          color: Colors
+                              .white, // The color will be replaced by the gradient
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      FaIcon(
+                        FontAwesomeIcons.xTwitter,
+                        color: colorScheme.secondary,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    "Proverbs 12:22",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: colorScheme.secondary,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Text(
+                    "Topic: ",
+                    style: TextStyle(
+                      color: colorScheme.tertiary,
+                      fontSize: 19,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  AnimatedTextKit(
+                    pause: const Duration(milliseconds: 500),
+                    animatedTexts: [
+                      TypewriterAnimatedText(
+                        "Integrity",
+                        speed: const Duration(milliseconds: 150),
+                        textStyle: TextStyle(
+                          color: colorScheme.tertiary,
+                          fontSize: 19,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ],
+                    isRepeatingAnimation: false,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "It's a word that get's thrown around a lot, but what does integrity mean? \nDig into Proverbs 11:3 (the opposite of integrity is duplicity), Proverbs 12:22 (the role of honesty) and Hebrews 13:18 (having a clear conscience) with your small group. \nDiscuss what integrity looks like in school, at home, through activities and in relationships with others.",
+                style: TextStyle(color: colorScheme.secondary, fontSize: 16),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Widget eventPage() {
