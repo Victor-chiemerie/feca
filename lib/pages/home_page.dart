@@ -121,6 +121,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget overViewPage() {
     final deviceWidth = MediaQuery.of(context).size.width;
+    final deviceHeight = MediaQuery.of(context).size.height;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -159,20 +160,69 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(
                   width: deviceWidth * 0.5,
-                  child: const Column(
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "FECA NIGERIA",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "FECA NIGERIA",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
-                        ),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: colorScheme.surface,
+                                  title: Text(
+                                    "We exist to redeem the desolation of our land and generation.",
+                                    style: TextStyle(
+                                      color: colorScheme.secondary,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  content: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          height: deviceHeight * 0.3,
+                                          width: double.infinity,
+                                          decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "images/overview11.jpg"),
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "We rise and shine like the light, lifting up weay hands that hang down and feeble knees that stoop to fall.",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            icon: const Icon(Icons.more_vert),
+                          ),
+                        ],
                       ),
-                      Text(
+                      const Text(
                         "Federation of Colleges Ex-Students Christian Association",
                       ),
                     ],
@@ -215,20 +265,141 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(
                   width: deviceWidth * 0.5,
-                  child: const Column(
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "BELIEF",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "BELIEF",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
-                        ),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: colorScheme.surface,
+                                  scrollable: true,
+                                  content: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          "GOD",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          "The universal sinfulness and guilt of the human race since the fall, rendering man open to God's judgement, wrath and condemnation. \nRedemption from the guilt, penalty and power of sin only through the sacrificial death, shed blood and resurrection of our Lord Jesus Christ the incarnation of God Almighty through the virgin birth of Jesus for the reconcilation of the man to himself. \nThe body resurrection of the Lord Jesus Christ from the dead and his bodily ascension to the right hand of God the Father, and his physical bodily return to the earth to take the saints home to heaven. \nThe justification of the sinner by the grace of God through Jesus Christ alone.",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "REDEMPTION",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          "The existence and personality of the one external God; Father, Son and Holy Spirt as the Holy Trinity. The divine plenary inspiriation, infallibility and inerrancy of the Bible as the final authority. \nThe Lordship of Jesus Christ. \nThe personality of the Holy Spirit and the necessity of his work in reconciling sinners to God, and the indwelling Spirit in believers that helps to live a Christ-like life and equips the believer for God's srvice. The sovereignty of God's revelation through his Holy Word, Redemption and final judgement.",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "THE CHURCH",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          "The fellowship of all believers in the Holy universal Church, which is the body of Christ Membership, participation and service in a Bible believeing local church and respect, obedience and submission to properly constituted authority and leadership of the Church. \nThe five-fold ministerial offices given by our Lord Jesus Christ to the church for perfectiong the saints for the work of the ministry, for edifying of the body of Christ, namely; Apostles, Prophets, Evangelists, Pastors and Teachers. \nThe justification of the sinner by the grace of God through Jesus Christ alone.",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "THE HOLY SPIRIT",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          "The baptism by the Holy Spirit is the evidence of speaking in tongues. \nThe nine gifts of the Holy Spirit for the edification of the body of Christ and for the Lord's service.",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "TITHE",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          "The payment of tithes and offerings into the house of God to further the work of the ministry.",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "SIN",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          "The destruction of sinners in eternal hell fire, destruction of this present earth and creation of a new heaven and a new earht. \nHeaven as eternal reward for believers who endure to the end. Holiness and right living within the confines of the word of God for all believers in Jesus Chrsit as the Prerequisite for making heaven.",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 5),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            icon: const Icon(Icons.more_vert),
+                          ),
+                        ],
                       ),
-                      Text(
+                      const Text(
                         "We are guided by beliefs which act as a compass to fulfilling our mandate",
                       ),
                     ],
@@ -271,20 +442,98 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(
                   width: deviceWidth * 0.5,
-                  child: const Column(
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "CORE VALUES",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "CORE VALUES",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
-                        ),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: colorScheme.surface,
+                                  content: ListView(
+                                    shrinkWrap: true,
+                                    children: [
+                                      Text(
+                                        "1. PRAYER",
+                                        style: TextStyle(
+                                          color: colorScheme.secondary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Divider(
+                                        color: colorScheme.secondary,
+                                      ),
+                                      Text(
+                                        "2. WORD",
+                                        style: TextStyle(
+                                          color: colorScheme.secondary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Divider(
+                                        color: colorScheme.secondary,
+                                      ),
+                                      Text(
+                                        "3. OUTREACH",
+                                        style: TextStyle(
+                                          color: colorScheme.secondary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Divider(
+                                        color: colorScheme.secondary,
+                                      ),
+                                      Text(
+                                        "4. SACRIFICE",
+                                        style: TextStyle(
+                                          color: colorScheme.secondary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Divider(
+                                        color: colorScheme.secondary,
+                                      ),
+                                      Text(
+                                        "5. DISCIPLESHIP",
+                                        style: TextStyle(
+                                          color: colorScheme.secondary,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                      Divider(
+                                        color: colorScheme.secondary,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                            icon: const Icon(
+                              Icons.more_vert,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
+                      const Text(
                         "Our mission and core values drive our culture and are the foundation of our practice",
                       ),
                     ],
@@ -327,20 +576,71 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(
                   width: deviceWidth * 0.5,
-                  child: const Column(
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "ANTHEM",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "ANTHEM",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
-                        ),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: colorScheme.surface,
+                                  title: Text(
+                                    "We exist to redeem the desolation of our land and generation.",
+                                    style: TextStyle(
+                                      color: colorScheme.secondary,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  content: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          height: deviceHeight * 0.3,
+                                          width: double.infinity,
+                                          decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "images/overview11.jpg"),
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "We rise and shine like the light, lifting up weay hands that hang down and feeble knees that stoop to fall.",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            icon: const Icon(
+                              Icons.more_vert,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
+                      const Text(
                         "We shall rise and shine like the light...",
                       ),
                     ],
@@ -383,20 +683,71 @@ class _HomePageState extends State<HomePage> {
                 ),
                 SizedBox(
                   width: deviceWidth * 0.5,
-                  child: const Column(
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Text(
-                          "HISTORY",
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "HISTORY",
+                              textAlign: TextAlign.right,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
+                            ),
                           ),
-                        ),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) => AlertDialog(
+                                  backgroundColor: colorScheme.surface,
+                                  title: Text(
+                                    "We exist to redeem the desolation of our land and generation.",
+                                    style: TextStyle(
+                                      color: colorScheme.secondary,
+                                      fontSize: 17,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  content: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          height: deviceHeight * 0.3,
+                                          width: double.infinity,
+                                          decoration: const BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "images/overview11.jpg"),
+                                              fit: BoxFit.fill,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Text(
+                                          "We rise and shine like the light, lifting up weay hands that hang down and feeble knees that stoop to fall.",
+                                          style: TextStyle(
+                                            color: colorScheme.secondary,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                            icon: const Icon(
+                              Icons.more_vert,
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
+                      const Text(
                         "We have a history which act as a reminder to fulfill our vision",
                       ),
                     ],
@@ -505,7 +856,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
